@@ -9,7 +9,7 @@ const ExpenseList = ({ expenses }) => {
           {expenses.map((expense, index) => (
             <li key={index} className="flex justify-between">
               <span>{expense.description}</span>
-              <span>${expense.amount.toFixed(2)}</span>
+              <span>₹{expense.amount.toFixed(2)}</span>
             </li>
           ))}
         </ul>
