@@ -1,15 +1,24 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 const ExpenseForm = ({ onAddExpense }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddExpense({ description, amount: parseFloat(amount) });
+    onAddExpense({
+      description,
+      amount: parseFloat(amount),
+      date,
+      category,
+    });
     setDescription("");
     setAmount("");
+    setDate("");
+    setCategory("");
   };
 
   return (
@@ -26,6 +35,20 @@ const ExpenseForm = ({ onAddExpense }) => {
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
+        className="w-32 px-4 py-2 border border-gray-300 rounded"
+      />
+      <input
+        type="date"
+        placeholder="Date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        className="w-32 px-4 py-2 border border-gray-300 rounded"
+      />
+      <input
+        type="text"
+        placeholder="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
         className="w-32 px-4 py-2 border border-gray-300 rounded"
       />
       <button
